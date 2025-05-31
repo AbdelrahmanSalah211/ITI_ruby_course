@@ -80,8 +80,7 @@ class CBABank < Bank
           end
 
           Logger.log_info(transaction.user, transaction.amount)
-          puts "Call endpoint for success of User #{transaction.user.name} transaction with value #{transaction.amount}"
-          block.call('success') if block_given?
+          block.call('success', transaction) if block_given?
 
         else
           raise "#{transaction.user.name} not exist in the bank"
@@ -89,8 +88,7 @@ class CBABank < Bank
 
       rescue => e
         Logger.log_error(transaction.user, transaction.amount, e.message)
-        puts "Call endpoint for failure of User #{transaction.user.name} transaction with value #{transaction.amount} with reason #{e.message}"
-        block.call('failure') if block_given?
+        block.call('failure', transaction, e.message) if block_given?
       end
     end
   end
@@ -119,6 +117,6 @@ transactions = [
 ]
 
 bank = CBABank.new(users)
-bank.process_transactions(transactions) do |status|
-  puts status == 'success' ? "transaction processed successfully" : "transaction failed"
+bank.process_transactions(transactions) do |status, transaction, msg|
+  puts status == 'success' ? "Call endpoint for success of User #{transaction.user.name} transaction with value #{transaction.amount}" : "Call endpoint for failure of User #{transaction.user.name} transaction with value #{transaction.amount} with reason #{msg}"
 end
