@@ -15,8 +15,5 @@
   <%= button_to "Delete", @article, method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
 
-<% unless @article.archived? %>
-  <%= button_to "Report", report_article_path(@article), method: :post %>
-<% end %>
-
+<%= button_to "Report", report_article_path(@article), method: :post %>
 <%= link_to "Back to Articles", articles_path %>

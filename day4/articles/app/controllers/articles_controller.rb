@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
     if @article.reports_count >= 3
       @article.update(archived: true)
     end
-    redirect_to articles_path, notice: 'Article reported'
+    redirect_to @article, notice: 'Article reported'
   end
 
   private
