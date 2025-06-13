@@ -1,0 +1,6 @@
+2025-05-31 16:45:23 +0300 -- info -- processing transaction for: user Ali transaction with value -100, user Ali transaction with value -300, user John transaction with value -20, user Menna transaction with value -100
+2025-05-31 16:45:23 +0300 -- warnging -- User Ali has 0 balance.
+2025-05-31 16:45:23 +0300 -- info -- User Ali transaction with value -100 succeeded.
+2025-05-31 16:45:23 +0300 -- error -- User Ali transaction with value -300 failed with message Not enough balance.
+2025-05-31 16:45:23 +0300 -- info -- User John transaction with value -20 succeeded.
+2025-05-31 16:45:23 +0300 -- error -- User Menna transaction with value -100 failed with message Menna not exist in the bank.
